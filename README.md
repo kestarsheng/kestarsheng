@@ -12,13 +12,16 @@
 
 ### [huizhitong-agent](https://github.com/kestarsheng/huizhitong-agent) · 智能体协同中台
 
-基于 Spring Cloud Alibaba 微服务 + LangGraph 编排的多智能体协同平台：
+面向企业运营、客服与销售部门的智能体协同中台：Java 微服务承载业务与治理，Python 承载 LangGraph 编排、RAG 与 MCP，Vue 3 提供控制台。
 
-- 多智能体流程编排与状态机（PostgreSQL Checkpoint 持久化，支持任务中断恢复）
-- MCP 标准化工具接入，工具复用率提升约 40%
-- A2A 跨智能体协同：客服 / 库存 / 知识三类 Agent 任务转派
-- 可观测层：RabbitMQ 异步审计日志 + FastAPI SSE 实时进度推送
-- 模型网关：DeepSeek 主 + Qwen 降级，Sentinel 限流熔断
+- **LangGraph 多智能体编排**：意图分类 → 任务规划 → 并行扇出 → 结果校验 → 答案生成，SSE 流式输出节点执行进度
+- **A2A 跨智能体协同**：入口智能体识别意图，LLM / 规则路由并行转发库存、知识、工单专业智能体后协同汇总
+- **RAG 混合检索**：BGE-M3 稠密 + 稀疏向量 → RRF 融合 → BGE-reranker-large 重排
+- **MCP 工具接入**：库存 / 工单查询统一封装，支持注册、目录刷新与健康检查
+- **工具授权 RBAC + 多租户隔离**：未授权工具对话中返回 FORBIDDEN
+- **JWT + 网关统一鉴权**：Gateway 统一校验透传，绕过网关直连同样被拦截
+- **双模型网关**：DeepSeek 主 + 通义千问降级，异常自动切换
+- **调用审计**：RabbitMQ 异步落库 MySQL，MQ 故障自动降级直写
 
 ### [zhixiao-rag](https://github.com/kestarsheng/zhixiao-rag) · RAG 知识问答系统
 
