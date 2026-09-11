@@ -7,7 +7,8 @@
 - 🔭 专注方向：AI Agent 应用开发、RAG 检索增强与评估、Prompt Engineering
 - 🌱 正在深入：Agent 可观测性与根因定位、MCP / A2A 协议工程化
 - 📫 邮箱：2410251355@henu.edu.cn
-
+- 🤝 活跃参与开源
+  
 ## 🔥 项目
 
 ### [huizhitong-agent](https://github.com/kestarsheng/huizhitong-agent) · 智能体协同中台
@@ -22,6 +23,14 @@
 - **JWT + 网关统一鉴权**：Gateway 统一校验透传，绕过网关直连同样被拦截
 - **双模型网关**：DeepSeek 主 + 通义千问降级，异常自动切换
 - **调用审计**：RabbitMQ 异步落库 MySQL，MQ 故障自动降级直写
+
+### [code-review-agent](https://github.com/kestarsheng/code-review-agent) · AI Code Review Agent
+
+MCP hackathon 2026 参赛作品，把代码质量审查做成交互式服务：
+
+- 基于 MCP 协议对接 IDE / CI，做增量代码审查
+- 可配置规则与严重级别，输出结构化审查意见
+- Python 实现，聚焦 Agent 与工具协议（MCP）的工程化落地
 
 ### [zhixiao-rag](https://github.com/kestarsheng/zhixiao-rag) · RAG 知识问答系统
 
@@ -48,6 +57,10 @@
 **数据与基础设施：** MySQL · PostgreSQL · Redis · RabbitMQ · Docker · Nginx
 
 **前端与工具：** Vue 3 · VitePress · Git · GitHub Actions
+
+## 📚 学习中
+
+- [Hugging Face Agents Course](https://github.com/kestarsheng/agents-course) · Agent 开发系统课程
 
 
 ---
