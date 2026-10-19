@@ -1,67 +1,55 @@
 # 你好，我是刘宇珂(Yuke) 👋
 
-
 ## 🧭 关于我
 
-- 🎓 河南大学 · 网络工程（GPA 3.5/4.0，专业前 10%）
-- 🔭 专注方向：AI Agent 应用开发、RAG 检索增强与评估、Prompt Engineering
-- 🌱 正在深入：Agent 可观测性与根因定位、MCP / A2A 协议工程化
+- 🎓 河南大学 · 网络工程 2028 届本科（GPA 3.5/4.0，专业前 10%）
+- 🔭 方向：AI 应用开发（Agent / RAG / MCP）· 全栈开发
+- 💼 2026 夏完成一段 AI 智能体后端开发实习（企业智能体协同中台方向）
+- 🌱 正在做：对话式数据分析智能体（NL2SQL），见下方
 - 📫 邮箱：2410251355@henu.edu.cn
-- 🤝 活跃参与开源
-  
+- ✍️ 博客：[掘金](https://juejin.cn/user/181873132458346)
+
 ## 🔥 项目
 
-### [huizhitong-agent](https://github.com/kestarsheng/huizhitong-agent) · 智能体协同中台
+### [code-review-agent](https://github.com/kestarsheng/code-review-agent) · AI 代码审查 Agent（已部署在线 Demo）
 
-面向企业运营、客服与销售部门的智能体协同中台：Java 微服务承载业务与治理，Python 承载 LangGraph 编排、RAG 与 MCP，Vue 3 提供控制台。
+X-Agent AI MCP Hackathon 2026 参赛作品。针对 AI 生成代码"无人把关"的问题：
 
-- **LangGraph 多智能体编排**：意图分类 → 任务规划 → 并行扇出 → 结果校验 → 答案生成，SSE 流式输出节点执行进度
-- **A2A 跨智能体协同**：入口智能体识别意图，LLM / 规则路由并行转发库存、知识、工单专业智能体后协同汇总
-- **RAG 混合检索**：BGE-M3 稠密 + 稀疏向量 → RRF 融合 → BGE-reranker-large 重排
-- **MCP 工具接入**：库存 / 工单查询统一封装，支持注册、目录刷新与健康检查
-- **工具授权 RBAC + 多租户隔离**：未授权工具对话中返回 FORBIDDEN
-- **JWT + 网关统一鉴权**：Gateway 统一校验透传，绕过网关直连同样被拦截
-- **双模型网关**：DeepSeek 主 + 通义千问降级，异常自动切换
-- **调用审计**：RabbitMQ 异步落库 MySQL，MQ 故障自动降级直写
-
-### [code-review-agent](https://github.com/kestarsheng/code-review-agent) · AI Code Review Agent
-
-MCP hackathon 2026 参赛作品，把代码质量审查做成交互式服务：
-
-- 基于 MCP 协议对接 IDE / CI，做增量代码审查
-- 可配置规则与严重级别，输出结构化审查意见
-- Python 实现，聚焦 Agent 与工具协议（MCP）的工程化落地
+- **三引擎交叉验证**：规则引擎（40 条跨语言规则 / 9 种语言，含 AI Hallucination 模式规则）+ AST 结构分析 + LLM 语义审查，双引擎命中自动加权置信度
+- **10 个 MCP Tools + REST API 双形态**，支持 GitHub PR URL 直接审查
+- 输出 **SARIF 2.1.0**，可直接接入 GitHub Code Scanning；**93 个 Unit Test** 覆盖
+- 在线 Demo：https://code-review-agent-ashy-six.vercel.app
 
 ### [zhixiao-rag](https://github.com/kestarsheng/zhixiao-rag) · RAG 知识问答系统
 
 面向制造业售后与客服的文档知识问答系统：
 
-- 混合检索：Milvus 向量检索 + BM25 关键词 + Rerank 重排序
-- 基于 Ragas 的离线评估体系，以 Context Relevancy / Faithfulness 指标驱动迭代
-- 多格式文档解析（PDF / Word / PPT / TXT）+ 答案溯源
+- **混合检索**：BGE-M3 稠密 + jieba BM25 稀疏 → RRF 融合 → BGE Reranker 精排
+- **评测驱动**：基于 Ragas 构建 200+ 问答对回归基线，Context Relevancy 0.72 → 0.89
+- 多格式解析（PDF / Word / PPT / TXT）+ 答案溯源（页码 / 章节 / 检索得分）
 
-### [prompt-arsenal](https://github.com/kestarsheng/prompt-arsenal) · 个人 AI 提示词库
+### [prompt-arsenal](https://github.com/kestarsheng/prompt-arsenal) · 提示词工程化工具链 ⭐3
 
-高频开发场景的结构化提示词模板库：VitePress 文档站 + GitHub Actions CI/CD + 侧边栏自动生成脚本。
+[文档站](https://kestarsheng.github.io/prompt-arsenal)｜7 大场景「指令 + 变量 + 示例」三段式模板；递归扫描自动生成侧边栏 + Pagefind 中文搜索 + GitHub Actions push 即部署
 
-### [prompt-arsenal-cli](https://github.com/kestarsheng/prompt-arsenal-cli) · 终端一键调用提示词模板
+### [prompt-arsenal-cli](https://github.com/kestarsheng/prompt-arsenal-cli) · 终端一键调用提示词模板【开发中】
 
-配套 CLI 工具，在终端和 coding agent 中一键调用提示词模板。【开发中】
+配套 CLI，在终端和 coding agent 中直接调用提示词模板。
+
+## 🚧 正在做
+
+**对话式数据分析智能体（NL2SQL）**：自然语言进、SQL 与图表出。Schema 语义层检索解决多表选错问题，sqlglot 校验 + 报错回灌重试做自愈闭环，只读沙箱保证执行安全。完成后开源。
 
 ## 🧰 技术栈
 
-**AI / LLM：** LangChain · LangGraph · MCP · Milvus · Ragas · RAG
-
-**后端：** Java · Spring Boot · Spring Cloud · Python · FastAPI
-
+**AI / LLM：** LangChain · LangGraph · MCP · A2A · Milvus · Ragas · RAG · Prompt Engineering
+**后端：** Python · FastAPI · Java · Spring Boot · Spring Cloud Alibaba
 **数据与基础设施：** MySQL · PostgreSQL · Redis · RabbitMQ · Docker · Nginx
-
 **前端与工具：** Vue 3 · VitePress · Git · GitHub Actions
 
 ## 📚 学习中
 
-- [Hugging Face Agents Course](https://github.com/kestarsheng/agents-course) · Agent 开发系统课程
-
+- [Hugging Face Agents Course](https://github.com/kestarsheng/agents-course)
 
 ---
 
